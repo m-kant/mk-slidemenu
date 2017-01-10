@@ -1,7 +1,7 @@
 mk-slidemenu
 ===============
 
-Converts nested lists to sliding menu. CSS animated. Minimal styles constraints.
+Converts nested lists to sliding menu. Library agnostic UI widget. CSS animated. Minimal styles constraints.
 
 [Demo](http://mkant.ru/mink-js/mk-slidemenu)
 
