@@ -1,0 +1,30 @@
+
+/* slidemenu DESIGN */
+/* whole menu */
+.mk-slidemenu.my-style {
+  background-color: #ccccff;
+  font-size: 12pt;
+  line-height: 14pt;
+}
+/* item */
+.mk-slidemenu.my-style li {
+  border-bottom: 1px solid #ffffff;
+}
+/* trigger */
+.mk-slidemenu.my-style li > a:hover {
+  background-color: #dbdbff;
+}
+/* item content - trigger and text */
+.mk-slidemenu.my-style li > a,
+.mk-slidemenu.my-style li > div {
+  padding: 7px 10px;
+}
+/* trigger children marker */
+.mk-slidemenu.my-style .mk-has-submenu > a:before {
+  content: '›';
+  float: right;
+  font-size: 22pt;
+  line-height: 14pt;
+  font-weight: bold;
+  color: #a5a5ce;
+}

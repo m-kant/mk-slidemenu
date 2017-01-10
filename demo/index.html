@@ -13,58 +13,228 @@
 	<script   src="https://code.jquery.com/jquery-2.2.3.min.js" ></script>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script charset='UTF-8' src='../_libs/date.format.js'></script>
-
-	<!-- Helper, nav -->
-	<script charset='UTF-8' src='../!components/helpers.js'></script>
 
 	<!-- MK libraries -->
-	<link rel="stylesheet" href="../_libs/mk.min.css">
-	<script charset='UTF-8' src='../_libs/mk.min.js'></script>
+	<link rel="stylesheet" href="../dist/mk-slidemenu.css">
+	<script charset='UTF-8' src='../dist/mk-slidemenu.js'></script>
 
-	<!-- mk debug -->
-	<script charset='UTF-8' src='../../src/js/mk.slidemenu.js'></script>
-	<script charset='UTF-8' src='../../src/js/mk.utils.arrays.js'></script>
-	<script charset='UTF-8' src='../../src/js/mk.utils.dom.js'></script>
+	<link rel="stylesheet" href="style.css">
+	<title>mk-slidemenu Demo</title>
 
-	<link rel="stylesheet" href="../../build/css/mk.css">
-
-
-	<title>mk.slidemenu Demo</title>
+	<style>
+		.mk-slidemenu small{color: #999;}
+	</style>
 </head>
 
 <body>
 <div class="container">
-<div id="topNavEl"></div>
 
 
-	<h1>mk.slidemenu Demo</h1>
-	<p>Converts some ul list tree into slide menu. Library agnostic. CSS animated.</p>
-	<pre>mk.slidemenu.create(listTreeElement,options);</pre>
+	<h1>mk.Slidemenu</h1>
+	<p>Converts nested lists to sliding menu. CSS animated, minimum of styles and constraints.
+	</p>
+	<div>
+		<a class="btn btn-default" href="https://github.com/m-kant/mk-slidemenu">Download from GIT Hub</a>
+		<a class="btn btn-default" href="https://www.npmjs.com/package/mk-slidemenu">Download as NPM package</a>
+	</div>
 
+
+	<h2>Demo</h2>
 	<ul id='slidetreeEl'>
-		<li><a onclick='mk.slidemenu.gointo(this);'>item A</a>
+		<li>
+			<a>
+				item A
+			</a>
 			<ul>
 				<li><a>sub item A1</a></li>
 				<li><a>sub item A2</a></li>
 			</ul>
 		</li>
-		<li><a>item B</a></li>
-		<li><a>item C</a>
+		<li>item C
 			<ul>
-				<li><a>sub item C1</a></li>
+				<li><div>sub item C1</div></li>
 				<li><a>deep sub item C2</a>
 					<ul>
 						<li><a>sub sub item C2.1</a></li>
 						<li><a>sub sub item C2.2</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><a>item E</a>
+			<ul>
+				<li><a>sub item E1</a></li>
+				<li><a>sub item E2</a></li>
+			</ul>
+		</li>
+	</ul>
+
+	<h2>Inclusion</h2>
+	<p>Include script and style sheet into you page:</p>
+	<pre>&#60;script src="path/to/plugin/mk-slidemenu.min.js">&#60;/script>
+&#60;link href="path/to/plugin/mk-slidemenu.min.css" rel="stylesheet"></pre>
+
+	<h2>Usage</h2>
+	<pre>new mk.Slidemenu( listElement[, options] );</pre>
+	<p><b>listElement</b> - is a DOM Element of a list (UL tag)</p>
+	<h3>Options</h3>
+	<ul>
+		<li><b>className</b> {<i>string</i>} user deifined CSS class for slidemenu. Default is empty string</li>
+		<li><b>triggerClass</b> {<i>string</i>} CSS class of trigger element. Default is 'mk-slidemenu-trigger'</li>
+		<li><b>backButtonContent</b> {<i>html string</i>} Default is '‹ Back'</li>
+		<li><b>backButtonClass</b> {<i>string</i>} Default is 'mk-slidemenu-back'</li>
+		<li><b>width</b> {<i>css string</i>} any legitimate width, for example: '100px', or '50%', default is null, that means 100% of container width</li>
+		<li><b>height</b> {<i>css string</i>} any legitimate height, for example: '100px', or '50%', default is null, that means height depending on current menu height</li>
+	</ul>
+
+	<h2>Styling</h2>
+	<div class='row'>
+		<div class='col-sm-6'>
+
+			<p>Use custom CSS class to style slidemenu on your own. Use context styles in CSS file.</p>
+			<pre>new mk.Slidemenu(ul,{className:'my-style'});</pre>
+
+			<ul id='slidetreeMyStEl'>
+				<li>
+					<a>Item A</a>
+					<ul>
+						<li><a>Item A1</a></li>
+						<li><a>Item A2</a></li>
+					</ul>
+				</li>
+				<li>Item C
+					<ul>
+						<li><a>Item C1</a>
+							<ul>
+								<li><a>Item C1.1</a></li>
+								<li><a>Item C1.2</a></li>
+							</ul>
+						</li>
+						<li><div>Item C2</div></li>
+					</ul>
+				</li>
+				<li><a>Item E</a>
+					<ul>
+						<li><a>Item E1</a></li>
+						<li><a>Item E2</a></li>
+					</ul>
+				</li>
+			</ul>
+
+
+		</div>
+		<div class='col-sm-6'>
+<p>.my-style definition:</p>
+<pre style='height:150px;'>
+/* whole menu */
+.mk-slidemenu.my-style {
+  background-color: #ccccff;
+  font-size: 12pt;
+  line-height: 14pt;
+}
+/* item */
+.mk-slidemenu.my-style li {
+  border-bottom: 1px solid #ffffff;
+}
+/* trigger */
+.mk-slidemenu.my-style li > a:hover {
+  background-color: #dbdbff;
+}
+/* item content - trigger and text */
+.mk-slidemenu.my-style li > a,
+.mk-slidemenu.my-style li > div {
+  padding: 7px 10px;
+}
+/* trigger children marker */
+.mk-slidemenu.my-style .mk-has-submenu > a:before {
+  content: '›';
+  float: right;
+  font-size: 22pt;
+  line-height: 14pt;
+  font-weight: bold;
+  color: #a5a5ce;
+}
+</pre>
+		</div>
+	</div>
+
+	<h3>Labels</h3>
+	<div class='row'>
+		<div class='col-sm-11'>
+			<p>You can use alternative markers for items, containing submenu.
+				It is a small triangles at right bottom corner instead of '›' sign.
+				It is much more suitable for toolbars.
+			</p>
+			<pre>new mk.Slidemenu( listElement, {className:'mk-labels'} );</pre>
+		</div>
+		<div class='col-sm-1'>
+			<ul id='slidetreeLabEl'>
+				<li>
+					<a>A</a>
+					<ul>
+						<li><a>A1</a></li>
+						<li><a>A2</a></li>
+					</ul>
+				</li>
+				<li>C
+					<ul>
+						<li><a>C1</a>
+							<ul>
+								<li><a>1.1</a></li>
+								<li><a>1.2</a></li>
+							</ul>
+						</li>
+						<li><div>C2</div></li>
+					</ul>
+				</li>
+				<li><a>E</a>
+					<ul>
+						<li><a>E1</a></li>
+						<li><a>E2</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+
+
+
+	<h2>List formatting</h2>
+	<ul id='slidetree2El'>
+		<li>
+			<a>
+				item A
+				<div><small>First anchor &lt;A&gt; element inside &lt;LI&gt; container is used as a trigger to switch into the submenu</small></div>
+			</a>
+			<ul>
+				<li><a>sub item A1</a></li>
+				<li><a>sub item A2</a></li>
+			</ul>
+		</li>
+		<li>
+			<div>
+				item B<br />
+				<small>Use &lt;DIV&gt; wrapper inside &lt;LI&gt; container if you don't have submenu, and don't need a trigger in current item</small>
+			</div>
+		</li>
+		<li>item C
+			<ul>
+				<li><div><small>previous 'C' item has no &lt;A&gt; element, it was created automatically to wrap pure text inside &lt;LI&gt; container</small></div></li>
+				<li><a>deep sub item C2</a>
+					<ul>
+						<li><a>sub sub item C2.1</a><div>Some additional text here</div></li>
+						<li><a>sub sub item C2.2</a><div>Some additional text with <a href="#">additional link</a></div></li>
 						<li><a>sub sub item C2.3</a></li>
 					</ul>
 				</li>
 				<li><a>sub item C3</a></li>
 			</ul>
 		</li>
-		<li><a>item D</a></li>
+		<li><div>item D</div></li>
 		<li><a>item E</a>
+			<div><small>Here is one more &lt;DIV&gt; element in addition  with &lt;A&gt; submenu trigger, so 'over' styles and some paddings does not applied to it</small></div>
 			<ul>
 				<li><a>sub item E1</a></li>
 				<li><a>sub item E2</a></li>
@@ -72,21 +242,63 @@
 				<li><a>sub item E4</a></li>
 			</ul>
 		</li>
-		<li><a>item F</a></li>
-
+		<li><a>item F
+			<div><small>this item is wrapped by &lt;A&gt; element, but have no submenu, so it do nothing, but have 'over' styles</small></div></a></li>
 	</ul>
-
+	<h3>HTML code of list</h3>
+<pre style='max-height: 200px;'>
+  &lt;ul id='slidetree2El'>
+    &lt;li>
+      &lt;a>
+        item A
+        &lt;div>&lt;small>First anchor &lt;A&gt; element inside &lt;LI&gt; container is used as a trigger to switch into the submenu&lt;/small>&lt;/div>
+      &lt;/a>
+      &lt;ul>
+        &lt;li>&lt;a>sub item A1&lt;/a>&lt;/li>
+        &lt;li>&lt;a>sub item A2&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/li>
+    &lt;li>
+      &lt;div>
+        item B&lt;br />
+        &lt;small>Use &lt;DIV&gt; wrapper inside &lt;LI&gt; container if you don't have submenu, and don't need a trigger in current item&lt;/small>
+      &lt;/div>
+    &lt;/li>
+    &lt;li>item C
+      &lt;ul>
+        &lt;li>&lt;div>&lt;small>previous 'C' item has no &lt;A&gt; element, it was created automatically to wrap pure text inside &lt;LI&gt; container&lt;/small>&lt;/div>&lt;/li>
+        &lt;li>&lt;a>deep sub item C2&lt;/a>
+          &lt;ul>
+            &lt;li>&lt;a>sub sub item C2.1&lt;/a>&lt;div>Some additional text here&lt;/div>&lt;/li>
+            &lt;li>&lt;a>sub sub item C2.2&lt;/a>&lt;div>Some additional text with &lt;a href="#">additional link&lt;/a>&lt;/div>&lt;/li>
+            &lt;li>&lt;a>sub sub item C2.3&lt;/a>&lt;/li>
+          &lt;/ul>
+        &lt;/li>
+        &lt;li>&lt;a>sub item C3&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/li>
+    &lt;li>&lt;div>item D&lt;/div>&lt;/li>
+    &lt;li>&lt;a>item E&lt;/a>
+      &lt;div>&lt;small>Here is one more &lt;DIV&gt; element in addition  with &lt;A&gt; submenu trigger, so 'over' styles and some paddings does not applied to it&lt;/small>&lt;/div>
+      &lt;ul>
+        &lt;li>&lt;a>sub item E1&lt;/a>&lt;/li>
+        &lt;li>&lt;a>sub item E2&lt;/a>&lt;/li>
+        &lt;li>&lt;a>sub item E3&lt;/a>&lt;/li>
+        &lt;li>&lt;a>sub item E4&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/li>
+    &lt;li>&lt;a>item F
+      &lt;div>&lt;small>this item is wrapped by &lt;A&gt; element, but have no submenu, so it do nothing, but have 'over' styles&lt;/small>&lt;/div>&lt;/a>&lt;/li>
+  &lt;/ul>
+</pre>
+	<hr />
 
 <script>
-	mk.slidemenu.create(
-		slidetreeEl,
-		{
-			className:'mk-slidemenu-menu',
-			//width:'300px',
-			//height:'50%',
-			//backButtonContent:'..'
-		}
-	);
+	new mk.Slidemenu( slidetreeEl );
+	new mk.Slidemenu( slidetree2El,   {height:'280px'} );
+	new mk.Slidemenu( slidetreeMyStEl, {className:'my-style'} );
+	new mk.Slidemenu( slidetreeLabEl, {className:'mk-labels',width:'35px',backButtonContent: '‹‹',} );
+
 </script>
 
 </div><!-- .container -->

@@ -12,31 +12,31 @@ var cleanCSS	= require('gulp-clean-css');
 gulp.task('clean', function(){ return del(['dist/*']); });
 
 gulp.task('js', function() {
-	return gulp.src('src/mk-infopane.js')
-		//.pipe(newer('dist/jquery.mk-infopane.min.js'))
+	return gulp.src('src/mk-slidemenu.js')
+		//.pipe(newer('dist/jquery.mk-slidemenu.min.js'))
 		.pipe(rigger())
 		.pipe(gulp.dest('dist/'))
 		.pipe(uglify())
-		.pipe(rename('mk-infopane.min.js'))
+		.pipe(rename('mk-slidemenu.min.js'))
 		.pipe(gulp.dest('dist/'));
 });
 gulp.task('styles', function() {
 	return gulp.src(
-			'src/mk-infopane.less'
+			'src/mk-slidemenu.less'
 		//	,{since:gulp.lastRun('styles')}
 		)
-		//.pipe(newer('dist/mk-infopane.css'))
+		//.pipe(newer('dist/mk-slidemenu.css'))
 		.pipe(less())
 		.pipe(prefix())
 		.pipe(gulp.dest('dist/'))
 		.pipe(cleanCSS())
-		.pipe(rename('mk-infopane.min.css'))
+		.pipe(rename('mk-slidemenu.min.css'))
 		.pipe(gulp.dest('dist/'));
 });
 
 gulp.task('watch', function () {
-	gulp.watch(['src/*.js'],gulp.parallel( 'js' ));
-	gulp.watch(['src/*.less'],gulp.parallel( 'styles' ));
+	gulp.watch(['src/*.js','src/js/*.js',],gulp.parallel( 'js' ));
+	gulp.watch(['src/*.less','src/less/*.less'],gulp.parallel( 'styles' ));
 });
 
 gulp.task('build', gulp.parallel( 'js','styles' ));

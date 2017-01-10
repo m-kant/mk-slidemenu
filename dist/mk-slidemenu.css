@@ -1,0 +1,88 @@
+/* VISUAL DESIGN */
+.mk-slidemenu {
+  background-color: #eee;
+}
+.mk-slidemenu li {
+  border-bottom: 1px solid #d5d5d5;
+}
+.mk-slidemenu li:last-child {
+  border: none;
+}
+.mk-slidemenu li > a:hover {
+  background-color: #d5d5d5;
+}
+.mk-slidemenu li > a,
+.mk-slidemenu li > div {
+  padding: 5px 10px;
+}
+.mk-slidemenu .mk-has-submenu > a:before {
+  content: '›';
+  float: right;
+}
+.mk-slidemenu.mk-labels .mk-has-submenu > a {
+  position: relative;
+}
+.mk-slidemenu.mk-labels .mk-has-submenu > a:before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0px;
+  height: 0px;
+  border: 5px solid rgba(0, 0, 0, 0.3);
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+/* LOGIC */
+.mk-slidemenu {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-transition: height .5s;
+  transition: height .5s;
+  border-radius: 4px;
+}
+.mk-slidemenu > ul {
+  display: block;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.mk-slidemenu > ul.mk-active {
+  position: relative;
+}
+.mk-slidemenu > ul.mk-future {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  position: absolute;
+  top: 0;
+}
+.mk-slidemenu > ul.mk-past {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  position: absolute;
+  top: 0;
+}
+.mk-slidemenu > ul.mk-past .mk-active {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.mk-slidemenu .mk-active,
+.mk-slidemenu .mk-future,
+.mk-slidemenu .mk-past {
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+.mk-slidemenu li {
+  display: block;
+}
+.mk-slidemenu li > a {
+  display: block;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}

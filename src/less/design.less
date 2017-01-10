@@ -1,0 +1,55 @@
+
+/* VISUAL DESIGN */
+.mk-slidemenu{
+	@bg:	#eee;  // item background color
+	@pad:	5px 10px;  // item content paddings
+	@ln:	darken(@bg,10%);  // item line color
+	@over:	darken(@bg,10%);  // trigger hover color
+
+
+	background-color: @bg;
+
+	// item
+	li{
+		border-bottom: 1px solid @ln;
+
+		&:last-child{
+			border: none;
+		}
+
+		&>a{
+			&:hover{
+				background-color: @over;
+			}
+		}
+
+		&>a,&>div{
+			padding: @pad;
+		}
+	}
+
+	.mk-has-submenu > a:before{
+		content: '›';
+		float:right;
+	}
+
+	// label markers for submenu triggers
+	&.mk-labels{
+		.mk-has-submenu>a{
+			position: relative;
+		}
+		.mk-has-submenu > a:before{
+			content: '';
+			display: block;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 0px;
+			height: 0px;
+			border: 5px solid rgba(0,0,0,0.3);
+			border-top-color: transparent;
+			border-left-color: transparent;
+		}
+	}
+
+}

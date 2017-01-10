@@ -1,7 +1,7 @@
 mk-slidemenu
 ===============
 
-Turns lists into sliding menu. Minimal constrains for styling.
+Converts nested lists to sliding menu. CSS animated. Minimal styles constraints.
 
 [Demo](http://mkant.ru/mink-js/mk-slidemenu)
 
@@ -19,7 +19,7 @@ Usage
 
 Create slidemenu instance, from the UL element.
 ```JavaScript
-var pane = new mk.Slidemenu( ulElement[,options] );
+new mk.Slidemenu( ulElement[,options] );
 ```
 
 Options

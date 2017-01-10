@@ -5,13 +5,16 @@
 	"url":"http://mkant.ru"
   },
   "name": "mk-slidemenu",
-  "description": "Turns lists into sliding menus",
+  "description": "Converts nested lists to sliding menu",
   "keywords": [
 	"slidemenu",
+	"menu",
+	"navigation",
 	"UI",
 	"mobile",
 	"widget",
-	"CSS animation"
+	"CSS animation",
+	"list"
   ],
   "version": "1.0.0",
   "license": "MIT",
